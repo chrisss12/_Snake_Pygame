@@ -1,5 +1,5 @@
 import pygame
-from rectangle import Rectangle,Snake
+from rectangle import Rectangle,Snake,Apple
 from Constans_SNAKE_ import *
 
 
@@ -14,8 +14,8 @@ pygame.init()
 win = pygame.display.set_mode((HEIGHT, WIDTH))
 pygame.display.set_caption('My game')
 
-snake = Snake(win, COLOR_B,[WIDTH_CENTER,HEIGHT_CENTER],CELL_SIZE, CELL_SIZE)
-apple = Rectangle(win, COLOR_R,(RAND_A, RAND_B) ,CELL_SIZE, CELL_SIZE)
+snake = Snake(win, COLOR_B,[WIDTH_CENTER,HEIGHT_CENTER])
+apple = Apple(win)
 
 run = True
 # pętla główna
@@ -34,12 +34,28 @@ while run:
             pygame.draw.rect(win, COLOR_B, pygame.Rect(x, y, CELL_SIZE, CELL_SIZE), width=1)
 
 
-    while RAND_A == HEIGHT_CENTER and RAND_B == WIDTH_CENTER:
+    while RAND_A == WIDTH_CENTER  and RAND_B == HEIGHT_CENTER :
         print(RAND_A)
         print(RAND_B)
         print("sanake_")
         RAND_A = random.randrange(0, WIDTH, CELL_SIZE)
-        RAND_B = random.randrange(0, WIDTH, CELL_SIZE)
+        RAND_B = random.randrange(0, HEIGHT, CELL_SIZE)
+
+    snake.body = []
+
+    if snake.pos[0] == apple.pos[0] and snake.pos[1] == apple.pos[1]:
+        apple.setpos()
+        # apple.pos = Apple.setpos()
+        # apple.pos = (random.randrange(0, WIDTH, CELL_SIZE),random.randrange(0, HEIGHT, CELL_SIZE))
+        # new_segment = Rectangle(win, COLOR_B,snake.pos,CELL_SIZE, CELL_SIZE)
+        snake.width += CELL_SIZE
+        # snake.body.append(new_segment)
+
+
+
+
+
+        print('tak')
 
     clock.tick(10)
     snake.draw()
