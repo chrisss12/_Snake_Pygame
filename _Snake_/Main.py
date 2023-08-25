@@ -1,13 +1,8 @@
 import pygame
-from rectangle import Rectangle,Snake,Apple
+from rectangle import Snake,Apple
 from Constans_SNAKE_ import *
 
-
-
-
 clock = pygame.time.Clock()
-
-
 
 pygame.init()
 # definiowanie okna gry
@@ -18,10 +13,8 @@ snake = Snake(win, COLOR_B,[WIDTH_CENTER,HEIGHT_CENTER])
 apple = Apple(win)
 
 run = True
-# pętla główna
+
 while run:
-
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -35,9 +28,6 @@ while run:
 
 
     while RAND_A == WIDTH_CENTER  and RAND_B == HEIGHT_CENTER :
-        print(RAND_A)
-        print(RAND_B)
-        print("sanake_")
         RAND_A = random.randrange(0, WIDTH, CELL_SIZE)
         RAND_B = random.randrange(0, HEIGHT, CELL_SIZE)
 
@@ -45,17 +35,9 @@ while run:
 
     if snake.pos[0] == apple.pos[0] and snake.pos[1] == apple.pos[1]:
         apple.setpos()
-        # apple.pos = Apple.setpos()
-        # apple.pos = (random.randrange(0, WIDTH, CELL_SIZE),random.randrange(0, HEIGHT, CELL_SIZE))
-        # new_segment = Rectangle(win, COLOR_B,snake.pos,CELL_SIZE, CELL_SIZE)
         snake.width += CELL_SIZE
+        # new_segment = Rectangle(win, COLOR_B,snake.pos,CELL_SIZE, CELL_SIZE)
         # snake.body.append(new_segment)
-
-
-
-
-
-        print('tak')
 
     clock.tick(10)
     snake.draw()
