@@ -25,10 +25,14 @@ class Apple(Rectangle):
         self.pos = [random.randrange(0, WIDTH, CELL_SIZE), random.randrange(0, HEIGHT, CELL_SIZE)]
 
 
-class Snake(Rectangle,segments):
-    def __init__(self):
-        super().__init__(win,COLOR_B,)
-    self.segments = segments
+class Snake(Rectangle):
+    def __init__(self,win,pos):
+        self.segments = []
+        super().__init__(win,COLOR_B,pos)
+        self.segments.append(pos)
+        print(self.segments)
+        self.head = pos
+
 
     def move(self):
         keys = pygame.key.get_pressed()
@@ -47,7 +51,12 @@ class Snake(Rectangle,segments):
             self.dir_2 = dir[1]
 
         if self.dir_2 == dir[2]:
-            self.pos[0] -= CELL_SIZE
+            print(self.segments)
+            new_pos = [self.segments[-1][0]+CELL_SIZE,self.segments[-1][1]]
+
+
+            # self.pos[0] -= CELL_SIZE
+
 
         elif self.dir_2 == dir[3]:
             self.pos[0] += CELL_SIZE

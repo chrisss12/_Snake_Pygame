@@ -9,7 +9,7 @@ pygame.init()
 win = pygame.display.set_mode((HEIGHT, WIDTH))
 pygame.display.set_caption('My game')
 
-snake = Snake(win, COLOR_B,[WIDTH_CENTER,HEIGHT_CENTER])
+snake = Snake(win,[WIDTH_CENTER,HEIGHT_CENTER])
 apple = Apple(win)
 
 run = True
