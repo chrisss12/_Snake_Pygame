@@ -11,7 +11,7 @@ class Rectangle():
         self.height = CELL_SIZE
         self.width = CELL_SIZE
         self.pos = pos
-        self.dir_2 = 'stop'
+        # self.dir_2 = 'stop'
 
     def draw(self):
         pygame.draw.rect(self.win, self.color, pygame.Rect(self.pos[0], self.pos[1], self.height, self.width))
@@ -26,48 +26,42 @@ class Apple(Rectangle):
 
 
 class Snake(Rectangle):
+
+    no_direction = [0, 0]
+    up_direction = [0, -1]
+    down_direction = [0, 1]
+    left_direction = [-1, 0]
+    right_direction = [1, 0]
+
+
     def __init__(self,win,pos):
         self.segments = []
         super().__init__(win,COLOR_B,pos)
         self.segments.append(pos)
         print(self.segments)
         self.head = pos
+        self.dir = Snake.no_direction
+
+
 
 
     def move(self):
         keys = pygame.key.get_pressed()
 
-        dir = ['up', 'down', 'left', 'right', 'stop']
-
         if keys[pygame.K_LEFT]:
-            self.dir_2 = dir[2]
+            self.dir = Snake.left_direction
+            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_UP]:
-            self.dir_2 = dir[0]
-
+            self.dir = Snake.up_direction
+            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_RIGHT]:
-            self.dir_2 = dir[3]
-
+            self.dir = Snake.right_direction
+            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_DOWN]:
-            self.dir_2 = dir[1]
+            self.dir = Snake.down_direction
+            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
+        self.pos = self.head
 
-        if self.dir_2 == dir[2]:
-            print(self.segments)
-            new_pos = [self.segments[-1][0]+CELL_SIZE,self.segments[-1][1]]
-
-
-            # self.pos[0] -= CELL_SIZE
-
-
-        elif self.dir_2 == dir[3]:
-            self.pos[0] += CELL_SIZE
-
-        elif self.dir_2 == dir[0]:
-            self.pos[1] -= CELL_SIZE
-
-        elif self.dir_2 == dir[1]:
-            self.pos[1] += CELL_SIZE
-        else:
-            pass
 
 
 
