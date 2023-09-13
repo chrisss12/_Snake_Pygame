@@ -59,6 +59,8 @@ class Snake(Rectangle):
             self.dir = Snake.down_direction
 
         self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
+        print(type(self.head))
+        print(self.head)
 
         self.pos = self.head
 
