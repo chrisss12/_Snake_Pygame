@@ -39,7 +39,7 @@ while run:
         # new_segment = Rectangle(win, COLOR_B,snake.pos,CELL_SIZE, CELL_SIZE)
         # snake.body.append(new_segment)
 
-    clock.tick(10)
+    clock.tick(7)
     snake.draw()
     apple.draw()
     pygame.display.update()

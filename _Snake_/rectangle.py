@@ -48,18 +48,18 @@ class Snake(Rectangle):
     def move(self):
         keys = pygame.key.get_pressed()
 
+
         if keys[pygame.K_LEFT]:
             self.dir = Snake.left_direction
-            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_UP]:
             self.dir = Snake.up_direction
-            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_RIGHT]:
             self.dir = Snake.right_direction
-            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
         elif keys[pygame.K_DOWN]:
             self.dir = Snake.down_direction
-            self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
+
+        self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
+
         self.pos = self.head
 
 
