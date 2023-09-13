@@ -22,6 +22,9 @@ while run:
 
     snake.move()
 
+    if snake.head[0] < LEFT_EDGE or snake.head[0] > RIGHT_EDGE or snake.head [1] < TOP_EDGE or snake.head[1] > BOTTOM_EDGE:
+        break
+
     for x in range(0,WIDTH,CELL_SIZE):
         for y in range(0,HEIGHT,CELL_SIZE):
             pygame.draw.rect(win, COLOR_B, pygame.Rect(x, y, CELL_SIZE, CELL_SIZE), width=1)
@@ -36,9 +39,7 @@ while run:
     if snake.pos[0] == apple.pos[0] and snake.pos[1] == apple.pos[1]:
         apple.setpos()
         snake.width += CELL_SIZE
-        # new_segment = Rectangle(win, COLOR_B,snake.pos,CELL_SIZE, CELL_SIZE)
-        # snake.body.append(new_segment)
-
+       
     clock.tick(7)
     snake.draw()
     apple.draw()
