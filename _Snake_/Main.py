@@ -36,7 +36,7 @@ while run:
 
     if snake.pos[0] == apple.pos[0] and snake.pos[1] == apple.pos[1]:
         apple.setpos()
-        snake.width += CELL_SIZE
+
        
     clock.tick(7)
     snake.draw()
