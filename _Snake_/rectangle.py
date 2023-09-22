@@ -38,15 +38,18 @@ class Snake(Rectangle):
         self.segments = []
         super().__init__(win,COLOR_B,pos)
         self.segments.append(pos)
-        print(self.segments)
+
         self.head = pos
         self.dir = Snake.no_direction
 
-
-
+    def draw(self):
+        for segments in self.segments:
+            Rectangle.draw(self)
 
     def move(self):
         keys = pygame.key.get_pressed()
+
+
 
 
         if keys[pygame.K_LEFT]:
@@ -59,11 +62,21 @@ class Snake(Rectangle):
             self.dir = Snake.down_direction
 
         self.head = self.head[0] + self.dir[0] * CELL_SIZE, self.head[1] + self.dir[1] * CELL_SIZE
-        print(type(self.head))
-        print(self.head)
+        self.segments.insert(0, self.head)
+        self.segments.pop()
+        print(self.segments)
+        # liczby = [100,101,102]
+        # liczby[0] = '*'
+        # daty = [[15,9,2023],[16,9,2023],[17,9,2023]]
+        # daty[0][1] = 10
+        # daty[1][1] = 10
+        # daty[2][1] = 10
+        #
+        # daty[1] = 'null'
 
         self.pos = self.head
-
+    # def add_segments(self):
+        
 
 
 
