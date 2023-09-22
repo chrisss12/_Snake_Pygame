@@ -34,8 +34,6 @@ while run:
         RAND_A = random.randrange(0, WIDTH, CELL_SIZE)
         RAND_B = random.randrange(0, HEIGHT, CELL_SIZE)
 
-    snake.body = []
-
     if snake.pos[0] == apple.pos[0] and snake.pos[1] == apple.pos[1]:
         apple.setpos()
         snake.width += CELL_SIZE
